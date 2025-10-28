@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="6dp">
+
+        <!-- ====================== PARTIDA 1 ====================== -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="4dp">
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time E vs Time F"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Odds -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#F5F5F5"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="1.95" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#F5F5F5"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="3.10" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#F5F5F5"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="3.60" />
+            </LinearLayout>
+
+            <!-- Botão Apostar -->
+            <Button
+                android:id="@+id/btnApostar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#0019FF"
+                android:text="Apostar no time E"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+
+            <!-- Botão Apostar 2 -->
+            <Button
+                android:id="@+id/btnApostar2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#0019FF"
+                android:text="Apostar no empate"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+
+            <!-- Botão Apostar 3-->
+            <Button
+                android:id="@+id/btnApostar3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#0019FF"
+                android:text="Apostar no time F"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+        <!-- ====================== PARTIDA 2 ====================== -->
+
+        <!-- ====================== PARTIDA 3 ====================== -->
+
+        <!-- ====================== PARTIDA 4 ====================== -->
+
+
+    </LinearLayout>
+</ScrollView>
