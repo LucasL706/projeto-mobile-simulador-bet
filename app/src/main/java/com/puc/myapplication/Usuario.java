@@ -12,12 +12,13 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-
+    private double saldo;
     // Construtor
     public Usuario(String nome, String email, String senha) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.saldo = 200.0; // saldo inicial padrão
     }
 
     // Getters e setters
@@ -32,4 +33,7 @@ public class Usuario {
 
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha; }
+
+    public double getSaldo() { return saldo; }
+    public void setSaldo(double saldo) { this.saldo = saldo; }
 }

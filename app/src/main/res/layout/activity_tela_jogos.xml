@@ -60,41 +60,7 @@
         app:cardBackgroundColor="#0019FF"
         app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="BONUS DE BOAS-VINDAS"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Ganhe até $200"
-                android:textColor="@android:color/white"
-                android:textSize="14sp" />
-
-            <!-- Botão extra -->
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#FFD700"
-                android:text="Adiquirir Bonus"
-                android:textColor="#000000" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- TABS -->
     <LinearLayout
@@ -167,6 +133,7 @@
                     android:padding="12dp">
 
                     <TextView
+                        android:id="@+id/partida1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Time A vs Time B"
@@ -182,6 +149,7 @@
                         android:gravity="center">
 
                         <TextView
+                            android:id="@+id/odd1a"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -191,6 +159,7 @@
                             android:background="#F5F5F5" />
 
                         <TextView
+                            android:id="@+id/odd1b"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -200,6 +169,7 @@
                             android:background="#F5F5F5" />
 
                         <TextView
+                            android:id="@+id/odd1c"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -237,6 +207,7 @@
                     android:padding="12dp">
 
                     <TextView
+                        android:id="@+id/partida2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Time C vs Time D"
@@ -252,6 +223,7 @@
                         android:gravity="center">
 
                         <TextView
+                            android:id="@+id/odd2a"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -261,6 +233,7 @@
                             android:background="#F5F5F5" />
 
                         <TextView
+                            android:id="@+id/odd2b"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -270,6 +243,81 @@
                             android:background="#F5F5F5" />
 
                         <TextView
+                            android:id="@+id/odd2c"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="2.75"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:background="#F5F5F5" />
+                    </LinearLayout>
+
+                    <!-- Botão Apostar -->
+                    <Button
+                        android:id="@+id/btnApostar3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#0019FF"
+                        android:text="Apostar"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Partida 2 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:id="@+id/partida3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Time E vs Time F"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="#000000" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/odd3a"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="2.10"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:background="#F5F5F5" />
+
+                        <TextView
+                            android:id="@+id/odd3b"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="3.20"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:background="#F5F5F5" />
+
+                        <TextView
+                            android:id="@+id/odd3c"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -291,14 +339,6 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-            <!-- Partida 3 -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="4dp"/>
 
         </LinearLayout>
     </ScrollView>
