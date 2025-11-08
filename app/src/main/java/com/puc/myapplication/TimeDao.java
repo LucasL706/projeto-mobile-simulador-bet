@@ -12,6 +12,9 @@ public interface TimeDao {
     @Insert
     void inserir(Time time);
 
+    @Query("SELECT * FROM times WHERE nome = :nome LIMIT 1")
+    Time buscarPorNome(String nome);
+
     @Query("SELECT * FROM times")
     List<Time> listarTodos();
 }

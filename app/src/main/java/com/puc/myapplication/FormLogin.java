@@ -3,7 +3,6 @@ package com.puc.myapplication;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,22 +29,25 @@ public class FormLogin extends AppCompatActivity {
 
         db = AppDatabase.getInstance(this);
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean inseridos = prefs.getBoolean("times_inseridos", false);
-        if (!inseridos) {
-            new Thread(() -> {
-                AppDatabase db = AppDatabase.getInstance(this);
-                db.timeDao().inserir(new Time("Palmeiras"));
-                db.timeDao().inserir(new Time("Sao Paulo"));
-                db.timeDao().inserir(new Time("Santos"));
-                db.timeDao().inserir(new Time("Fluminense"));
-                db.timeDao().inserir(new Time("Vasco"));
-                db.timeDao().inserir(new Time("Botafogo"));
-                db.timeDao().inserir(new Time("Bahia"));
-                db.timeDao().inserir(new Time("Vitoria"));
-                prefs.edit().putBoolean("times_inseridos", true).apply();
-            }).start();
-        }
+        new Thread(() -> {
+            AppDatabase db = AppDatabase.getInstance(this);
+            TimeDao timeDao = db.timeDao();
+
+            // Lista de times que você quer garantir que existam
+            String[] nomesTimes = {
+                    "Palmeiras", "Sao Paulo", "Santos",
+                    "Fluminense", "Vasco", "Botafogo",
+                    "Bahia", "Vitoria", "Atletico-MG", "Cruzeiro"
+            };
+
+            // Para cada time da lista, verifica se já existe no banco
+            for (String nome : nomesTimes) {
+                Time existente = timeDao.buscarPorNome(nome);
+                if (existente == null) {
+                    timeDao.inserir(new Time(nome));
+                }
+            }
+        }).start();
 
         text_tela_cadastro.setOnClickListener(v -> {
             Intent intent = new Intent(FormLogin.this, FormCadastro.class);
@@ -77,7 +79,6 @@ public class FormLogin extends AppCompatActivity {
 
         new Thread(() -> {
             Usuario usuario = db.usuarioDao().buscarPorEmail(email);
-
             runOnUiThread(() -> {
                 progressBar.setVisibility(View.INVISIBLE);
 
@@ -91,6 +92,7 @@ public class FormLogin extends AppCompatActivity {
                     intent.putExtra("email_usuario", usuario.getEmail());
                     SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
                     SharedPreferences.Editor editor = prefs.edit();
+                    editor.putInt("user_id", usuario.getId());
                     editor.putString("user_nome", usuario.getNome());
                     editor.putString("user_email", usuario.getEmail());
                     editor.apply();
