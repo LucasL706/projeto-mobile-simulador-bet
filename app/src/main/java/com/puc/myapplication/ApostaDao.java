@@ -3,6 +3,7 @@ package com.puc.myapplication;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -13,4 +14,7 @@ public interface ApostaDao {
 
     @Query("SELECT * FROM apostas WHERE usuarioId = :usuarioId")
     List<Aposta> listarApostasDoUsuario(int usuarioId);
+
+    @Update
+    void atualizar(Aposta aposta);
 }

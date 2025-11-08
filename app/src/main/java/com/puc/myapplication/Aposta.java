@@ -23,12 +23,15 @@ public class Aposta {
     private double valor;
     private double odd;
 
+    private String status;
+
     public Aposta(int usuarioId, String tituloPartida, String apostaEm, double valor, double odd) {
         this.usuarioId = usuarioId;
         this.tituloPartida = tituloPartida;
         this.apostaEm = apostaEm;
         this.valor = valor;
         this.odd = odd;
+        status = "simular";
     }
 
     // Getters e Setters
@@ -49,4 +52,7 @@ public class Aposta {
 
     public double getOdd() { return odd; }
     public void setOdd(double odd) { this.odd = odd; }
+
+    public String getStatus(){ return status; }
+    public void setStatus(String status) {this.status = status; };
 }
