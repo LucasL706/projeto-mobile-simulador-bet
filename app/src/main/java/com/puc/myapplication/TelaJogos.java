@@ -108,6 +108,85 @@ public class TelaJogos extends AppCompatActivity {
         paraTelaPerfil.setOnClickListener(view -> startActivity(new Intent(TelaJogos.this, TelaPerfil.class)));
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_tela_jogos);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
+        // Inicializa banco e componentes
+        db = AppDatabase.getInstance(this);
+        userBalance = findViewById(R.id.userBalance);
+
+        // Recupera o e-mail do usuário logado
+        String emailUsuario = getIntent().getStringExtra("email_usuario");
+
+        if (emailUsuario != null) {
+            usuarioLogado = db.usuarioDao().buscarPorEmail(emailUsuario);
+            if (usuarioLogado != null) {
+                // Formata saldo com duas casas decimais
+                DecimalFormat df = new DecimalFormat("R$ #,##0.00");
+                userBalance.setText(df.format(usuarioLogado.getSaldo()));
+            }
+        }
+
+        // Atualiza partidas com times aleatórios
+        atualizarPartidasAleatorias();
+
+        // Botoes de partida
+        btn1 = findViewById(R.id.btnApostar1);
+        btn1.setOnClickListener(view -> {
+            Intent intent = new Intent(TelaJogos.this, TelaPartidas.class);
+            intent.putExtra("time1", t1.getNome());
+            intent.putExtra("time2", t2.getNome());
+            intent.putExtra("odd1", odd1a.getText());
+            intent.putExtra("odd2", odd1b.getText());
+            intent.putExtra("odd3", odd1c.getText());
+            startActivity(intent);
+        });
+
+        btn2 = findViewById(R.id.btnApostar2);
+        btn2.setOnClickListener(view -> {
+            Intent intent = new Intent(TelaJogos.this, TelaPartidas.class);
+            intent.putExtra("time1", t3.getNome());
+            intent.putExtra("time2", t4.getNome());
+            intent.putExtra("odd1", odd2a.getText());
+            intent.putExtra("odd2", odd2b.getText());
+            intent.putExtra("odd3", odd2c.getText());
+            startActivity(intent);
+        });
+
+        btn3 = findViewById(R.id.btnApostar3);
+        btn3.setOnClickListener(view -> {
+            Intent intent = new Intent(TelaJogos.this, TelaPartidas.class);
+            intent.putExtra("time1", t5.getNome());
+            intent.putExtra("time2", t6.getNome());
+            intent.putExtra("odd1", odd3a.getText());
+            intent.putExtra("odd2", odd3b.getText());
+            intent.putExtra("odd3", odd3c.getText());
+            startActivity(intent);
+        });
+
+        // Inicializa botões de navegação
+        perfil = findViewById(R.id.imgPerfil);
+        perfil.setOnClickListener(view -> startActivity(new Intent(TelaJogos.this, TelaPerfil.class)));
+
+        bets = findViewById(R.id.imgBets);
+        bets.setOnClickListener(view -> startActivity(new Intent(TelaJogos.this, Bets.class)));
+
+        carteira = findViewById(R.id.imgCarteira);
+        carteira.setOnClickListener(view -> startActivity(new Intent(TelaJogos.this, Carteira.class)));
+
+        paraTelaPerfil = findViewById(R.id.icnPerfil);
+        paraTelaPerfil.setOnClickListener(view -> startActivity(new Intent(TelaJogos.this, TelaPerfil.class)));
+    }
+
+
     private void atualizarPartidasAleatorias() {
         // TextViews das partidas
         partida1 = findViewById(R.id.partida1);
