@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -29,6 +30,7 @@
             android:padding="12dp">
 
             <TextView
+                android:id="@+id/tituloAposta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Time E vs Time F"
@@ -74,7 +76,7 @@
 
             <!-- Botão Apostar -->
             <Button
-                android:id="@+id/btnApostar1"
+                android:id="@+id/btnTimeA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -85,7 +87,7 @@
 
             <!-- Botão Apostar 2 -->
             <Button
-                android:id="@+id/btnApostar2"
+                android:id="@+id/btnEmpate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -96,7 +98,7 @@
 
             <!-- Botão Apostar 3-->
             <Button
-                android:id="@+id/btnApostar3"
+                android:id="@+id/btnTimeB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -107,11 +109,13 @@
 
         </LinearLayout>
 
-        <!-- ====================== PARTIDA 2 ====================== -->
-
-        <!-- ====================== PARTIDA 3 ====================== -->
-
-        <!-- ====================== PARTIDA 4 ====================== -->
+        <EditText
+            android:id="@+id/valorAposta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="Digite o valor que sera apostado" />
 
 
     </LinearLayout>

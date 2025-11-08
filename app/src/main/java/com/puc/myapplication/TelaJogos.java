@@ -3,6 +3,7 @@ package com.puc.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,10 +22,14 @@ import java.util.Locale;
 import java.util.Random;
 
 public class TelaJogos extends AppCompatActivity {
-    TextView perfil, bets, carteira, userBalance, partida1, partida2;
+    TextView perfil, bets, carteira, userBalance, partida1, partida2, partida3;
     ImageView paraTelaPerfil;
     AppDatabase db;
     Usuario usuarioLogado;
+
+    Button btn1, btn2, btn3;
+
+    Time t1,t2,t3,t4,t5,t6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +61,31 @@ public class TelaJogos extends AppCompatActivity {
         // Atualiza partidas com times aleatórios
         atualizarPartidasAleatorias();
 
+        // Botoes de partida
+        btn1 = findViewById(R.id.btnApostar1);
+        btn1.setOnClickListener(view -> {
+            Intent intent = new Intent(TelaJogos.this, TelaPartidas.class);
+            intent.putExtra("time1", t1.getNome());
+            intent.putExtra("time2", t2.getNome());
+            startActivity(intent);
+        });
+
+        btn2 = findViewById(R.id.btnApostar2);
+        btn2.setOnClickListener(view -> {
+            Intent intent = new Intent(TelaJogos.this, TelaPartidas.class);
+            intent.putExtra("time1", t3.getNome());
+            intent.putExtra("time2", t4.getNome());
+            startActivity(intent);
+        });
+
+        btn3 = findViewById(R.id.btnApostar3);
+        btn3.setOnClickListener(view -> {
+            Intent intent = new Intent(TelaJogos.this, TelaPartidas.class);
+            intent.putExtra("time1", t5.getNome());
+            intent.putExtra("time2", t6.getNome());
+            startActivity(intent);
+        });
+
         // Inicializa botões de navegação
         perfil = findViewById(R.id.imgPerfil);
         perfil.setOnClickListener(view -> startActivity(new Intent(TelaJogos.this, TelaPerfil.class)));
@@ -72,9 +102,9 @@ public class TelaJogos extends AppCompatActivity {
 
     private void atualizarPartidasAleatorias() {
         // TextViews das partidas
-        TextView partida1 = findViewById(R.id.partida1);
-        TextView partida2 = findViewById(R.id.partida2);
-        TextView partida3 = findViewById(R.id.partida3);
+        partida1 = findViewById(R.id.partida1);
+        partida2 = findViewById(R.id.partida2);
+        partida3 = findViewById(R.id.partida3);
 
         // Odds da Partida 1
         TextView odd1a = findViewById(R.id.odd1a);
@@ -100,12 +130,12 @@ public class TelaJogos extends AppCompatActivity {
             Collections.shuffle(timesAleatorios, new Random());
 
             // Seleciona os 6 primeiros (sem repetição)
-            Time t1 = timesAleatorios.get(0);
-            Time t2 = timesAleatorios.get(1);
-            Time t3 = timesAleatorios.get(2);
-            Time t4 = timesAleatorios.get(3);
-            Time t5 = timesAleatorios.get(4);
-            Time t6 = timesAleatorios.get(5);
+            t1 = timesAleatorios.get(0);
+            t2 = timesAleatorios.get(1);
+            t3 = timesAleatorios.get(2);
+            t4 = timesAleatorios.get(3);
+            t5 = timesAleatorios.get(4);
+            t6 = timesAleatorios.get(5);
 
             // Atualiza textos com confrontos únicos
             partida1.setText(t1.getNome() + " vs " + t2.getNome());

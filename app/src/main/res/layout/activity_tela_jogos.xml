@@ -255,7 +255,7 @@
 
                     <!-- Botão Apostar -->
                     <Button
-                        android:id="@+id/btnApostar3"
+                        android:id="@+id/btnApostar2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -329,7 +329,7 @@
 
                     <!-- Botão Apostar -->
                     <Button
-                        android:id="@+id/btnApostar2"
+                        android:id="@+id/btnApostar3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"

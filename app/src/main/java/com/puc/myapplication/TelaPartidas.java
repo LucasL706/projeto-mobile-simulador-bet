@@ -1,6 +1,8 @@
 package com.puc.myapplication;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +22,31 @@ public class TelaPartidas extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        TextView titulo = findViewById(R.id.tituloAposta);
+
+        // Recebe os nomes vindos da Intent
+        String time1 = getIntent().getStringExtra("time1");
+        String time2 = getIntent().getStringExtra("time2");
+
+        // Define o texto dinamicamente
+        if (time1 != null && time2 != null) {
+            titulo.setText(time1 + " vs " + time2);
+        } else {
+            titulo.setText("Partida não encontrada");
+        }
+
+        Button btnApostar1 = findViewById(R.id.btnTimeA);
+        Button btnApostar3 = findViewById(R.id.btnTimeB);
+
+        // Atualiza o texto da partida
+        if (time1 != null && time2 != null) {
+            titulo.setText(time1 + " vs " + time2);
+
+            // Atualiza os textos dos botões
+            btnApostar1.setText("Apostar no " + time1);
+            btnApostar3.setText("Apostar no " + time2);
+
+        }
     }
 }

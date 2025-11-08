@@ -89,6 +89,11 @@ public class FormLogin extends AppCompatActivity {
                     Toast.makeText(FormLogin.this, "Login realizado com sucesso!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(FormLogin.this, TelaJogos.class);
                     intent.putExtra("email_usuario", usuario.getEmail());
+                    SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("user_nome", usuario.getNome());
+                    editor.putString("user_email", usuario.getEmail());
+                    editor.apply();
                     startActivity(intent);
                     finish();
                 }
